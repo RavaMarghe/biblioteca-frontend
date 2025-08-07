@@ -8,7 +8,11 @@
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-    />
+      />
+      <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search"
+      />
     <title>Biblioteca | Catalogo</title>
 </head>
 <body class="roboto-regular">
@@ -18,11 +22,21 @@
         <h1>Catalogo</h1>
         <h2>Esplora il nostro catalogo online</h2>
         <div class="hero-btns">
-          <button>Homepage</button>
-          <button>Login</button>
+            <a href="index.html" class="button">Homepage</a>
+            <a href="#" class="button">Login</a>
         </div>
       </div>
     </header>
-    <main></main>
+    <main>
+        <form>
+            <h3>Puoi cercare direttamente il libro che desideri<br/> oppure scorri in basso per il nostro
+                catalogo intero
+            </h3>
+        <div class="cerca-libro">
+            <span class="cerca-icon material-symbols-outlined">search</span>
+            <input class="cerca-input" type="search" placeholder="Scrivi il nome del libro...">
+        </div>
+        </form>
+    </main>
   </body>
 </html>
