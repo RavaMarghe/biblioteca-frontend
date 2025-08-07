@@ -1,47 +1,31 @@
-* {
-  margin: 0;
-  padding: 0;
+header {
+  display: flex;
+  justify-content: center;
+  background-color: var(--bg-third-color);
 }
 
-/* navbar */
-nav {
-  border: 2px solid blue;
+.hero-container {
   display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 2rem 0;
+}
+
+header img {
+  height: 16rem;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  margin-bottom: 1rem;
+}
+
+header h2 {
+  margin-bottom: 1rem;
+}
+
+.hero-btns {
+  display: flex;
+  width: 25vw;
   justify-content: space-between;
-  padding: 0 3rem;
-}
-
-nav img {
-  max-height: 10vh;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-#nav-link {
-  border: 1px, solid, red;
-  display: flex;
-  margin: 2rem, 0;
-  align-items: center;
-}
-
-#nav-link ul {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#nav-link ul li {
-  padding: 0 1rem;
-  list-style: none;
-}
-
-/* buttons */
-button {
-  height: 2.5rem;
-  padding: 0 4rem;
-  border-radius: 50px; /* si comporta in modo strano!!! */
-  background-color: peachpuff;
 }
