@@ -1,34 +1,30 @@
-.roboto-regular {
-  font-family: "Roboto", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  font-variation-settings: "wdth" 100;
-}
-
 :root {
   --bg-color: #f9f9f9;
-  --text-color: #333333;
+  --bg-color-soft: #fff3ea;
+  --bg-color-orange: #ffb88c;
+  --text-color: #2d2d2d;
   --primary-color: #e86434;
+  --primary-color-dark: #c75128;
   --secondary-color: #21756e;
-  --bg-second-color: #fef5f0;
-  --bg-third-color: #ffb88c;
 }
 
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   color: var(--text-color);
 }
 
-html {
+body {
+  font-family: "Lexend", sans-serif;
   background-color: var(--bg-color);
-  width: 100%;
-  height: 100vh;
+  color: var(--text-color);
 }
 
+/* === Font === */
 h1 {
   font-weight: 600;
+  margin-bottom: 1rem;
   font-size: 4rem;
 }
 
@@ -37,7 +33,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1.5rem;
 }
 
@@ -45,10 +41,46 @@ p {
   font-size: 1rem;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* buttons */
 button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   height: 2.5rem;
-  padding: 0 4rem;
-  border-radius: 50px; /* si comporta in modo strano!!! */
+  padding: 0.8rem 5rem;
+  border-radius: 30px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary-color {
   background-color: var(--primary-color);
+  color: var(--bg-color);
+  border: none;
+}
+
+.btn-primary-color:hover {
+  background-color: var(--primary-color-dark);
+  transform: scale(1.05);
+}
+
+.btn-secondary-color {
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.btn-secondary-color:hover {
+  background-color: var(--primary-color);
+  color: var(--bg-color);
 }
