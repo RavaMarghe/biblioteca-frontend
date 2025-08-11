@@ -1,0 +1,101 @@
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--bg-color-soft);
+  box-shadow: 0 0 12px var(--secondary-color);
+  padding: 2rem;
+  border-radius: 15px;
+  width: 25%;
+  z-index: 1000;
+}
+
+.modal-header {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+/* === trasparent layer */
+#transparent-layer {
+  display: none;
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+}
+
+/* === form === */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input {
+  padding: 0.5rem;
+  margin: 0.3rem 0 1rem 0;
+  border-radius: 8px;
+  background: var(--bg-color);
+  transition: box-shadow 0.25s;
+  font-size: 1rem;
+  outline: none;
+  border: 1px solid var(--secondary-color);
+  width: 100%;
+}
+
+label {
+  align-self: baseline;
+}
+
+input:focus-within {
+  box-shadow: 0 0 10px var(--secondary-color);
+}
+
+form button {
+  margin-top: 0.8rem;
+  font-size: 1.5rem;
+}
+
+form span {
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+form p {
+  margin-top: 1rem;
+}
+
+/* === close button === */
+i {
+  color: inherit;
+}
+
+#close-modal {
+  all: unset;
+  display: flex;
+  background: var(--bg-color);
+  justify-content: center;
+  align-items: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  transform: rotate(0deg);
+}
+
+#close-modal:hover {
+  transform: rotate(90deg);
+  background: var(--primary-color);
+  color: var(--bg-color);
+}

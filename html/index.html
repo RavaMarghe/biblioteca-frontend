@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/index.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-    />
+    <link rel="stylesheet" href="/css/modale.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap"
       rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     <title>Biblioteca | Home Page</title>
   </head>
@@ -28,10 +29,15 @@
           <a href="/html/catalogo.html"
             ><button class="btn-primary-color">Catalogo</button></a
           >
-          <button class="btn-secondary-color">Login</button>
+          <button id="login-btn" class="btn-secondary-color">Login</button>
         </div>
       </div>
     </header>
     <main></main>
   </body>
+  <!-- Contenitori per il modale di autenticazinoe -->
+  <div id="modal-placeholder"></div>
+  <div id="signup-modal-placeholder"></div>
+  <div id="transparent-layer"></div>
+  <script src="/js/auth-modale.js"></script>
 </html>
