@@ -120,9 +120,18 @@ header h2 {
   margin-bottom: 2rem;
 }
 
-.hero-btns {
+/*.hero-btns {
   display: flex;
   width: 25vw;
   justify-content: space-between;
+  margin-top: 2rem;
+}
+*/
+
+.hero-btns {
+  display: flex;
+  gap: 1rem; /*spazio costante tra i bottoni*/
+  flex-wrap: wrap; /*così vanno a capo se manca spazio*/
+  justify-content: center; 
   margin-top: 2rem;
 }
