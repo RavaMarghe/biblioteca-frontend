@@ -35,3 +35,92 @@ form {
 .cerca-icon {
   color: rgba(0, 0, 0, 0.25);
 }
+
+.catalogo-grid {
+  margin-top: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5rem;
+  background-color: var(--bg-color-soft);
+  padding: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.grid-img {
+  width: 180px;
+  height: auto;
+}
+
+.grid-img:hover {
+  transition: 0.5s;
+  transform: scale(1.05);
+}
+
+.grid-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.grid-description {
+  margin-top: 1.5rem;
+}
+
+.titolo-libro a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.autore-libro a {
+  color: gray;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.prezzo-libro {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  gap: 3rem;
+}
+
+.valore-prezzo {
+  margin-top: 0.6rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--price-color);
+}
+
+.btn-acquista {
+  background-color: var(--buy-btn-bg);
+  color: var(--buy-btn-text);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.btn-acquista:hover {
+  background-color: var(--buy-btn-bg-hover);
+}
+
+.titolo-libro a:hover,
+.autore-libro a:hover {
+  text-decoration: underline;
+}
+
+
+
+.grid > div {
+  background: white;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 8px;
+}
