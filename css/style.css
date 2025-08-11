@@ -111,9 +111,18 @@ header img {
   margin-bottom: 1.5rem;
 }
 
+header h1 {
+  margin-bottom: 1rem;
+}
+
+header h2 {
+  margin-bottom: 2rem;
+}
+
 .hero-btns {
   display: flex;
-  width: 25vw;
-  justify-content: space-between;
+  gap: 1rem; /*spazio costante tra i bottoni*/
+  flex-wrap: wrap; /*così vanno a capo se manca spazio*/
+  justify-content: center;
   margin-top: 2rem;
 }
