@@ -6,6 +6,12 @@
   --primary-color: #e86434;
   --primary-color-dark: #c75128;
   --secondary-color: #21756e;
+
+  /* === Prezzo e Bottone acquista === */
+  --price-color: #ff6a33;
+  --buy-btn-bg: #2a8f85;
+  --buy-btn-bg-hover: #21756e;
+  --buy-btn-text: #ffffff;
 }
 
 * {
