@@ -1,10 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const loginBtn = document.getElementsByClassName("login-btn");
-  const modalPlaceholder = document.getElementById("modal-placeholder");
+  const loginBtn = document.getElementsByClassName("login-btn"); //restituisce una HTMLCollection
+  console.log(loginBtn);// è vuota
+  const modalPlaceholder = document.getElementById("modal-placeholder");//contenitore per il modale
   const signupModalPlaceholder = document.getElementById(
     "signup-modal-placeholder"
   );
-  const transparentLayer = document.getElementById("transparent-layer");
+  const transparentLayer = document.getElementById("transparent-layer");//livello trasparente, per cliccare fuori e chiudere il modale
 
   // Apertura modale con form di accesso
   loginBtn.addEventListener("click", () => {
