@@ -116,11 +116,29 @@ form {
   text-decoration: underline;
 }
 
-
-
 .grid > div {
   background: white;
   padding: 2rem;
   text-align: center;
   border-radius: 8px;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.3rem;
+  margin-top: 1.5rem;
+}
+
+.pagination a {
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination a.active {
+  background-color: var(--buy-btn-bg);
+  color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
