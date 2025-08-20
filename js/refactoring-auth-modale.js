@@ -9,6 +9,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     );
 
+    // Aggiungo un listener per il click sul livello trasparente
+    // Se clicco sul livello trasparente, chiudo il modale
+    transparentLayer.addEventListener("click",
+        () => {
+                //seleziona il modale aperto (il primo che ha display: block)
+                const modaleAperto = modalPlaceholder.querySelector(".modal[style*='display: block']");
+                if(modaleAperto){
+                    chiudiModale(modaleAperto);
+                }
+        })
+
     function apriModaleLogin() {
         fetch("/html/modale-login.html")
             .then((res) => {//res è un'oggetto Response
@@ -33,16 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 // Chiudo il modale con il bottone di chiusura
                 const closeBtn = document.getElementById("close-modal");
-                closeBtn.addEventListener("click", () => { chiudiModale(modal) });
-
-                // Chiudo il modale cliccando al di fuori
-                transparentLayer.addEventListener("click", () => {chiudiModale(modal)})
-                /*
-                window.addEventListener("click", (e) => {
-                    if (e.target === transparentLayer) { chiudiModale(modal) }
-                });
-                */
-
+                //onclick è una proprietà dell'elemento, cui assegno una funzione                                     
+                closeBtn.onclick = () => {chiudiModale(modal)};
 
                 const switchToSignup = document.getElementById("switch-to-signup");//span in modale-login
                 // Switch al form di registrazione
@@ -75,11 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     // Chiudo il modale con il bottone di chiusura
                     const closeBtn = document.getElementById("close-modal");
-                    closeBtn.addEventListener("click", () => { chiudiModale(signupModal) });
-
-                    // Chiudo il modale cliccando al di fuori
-                    //window.addEventListener("click", () => {chiudiModale(signupModal)});
-                     transparentLayer.addEventListener("click", () => {chiudiModale(signupModal)});
+                    closeBtn.onclick = () => { chiudiModale(signupModal) };
 
                     // Torno al form di accesso
                     const switchToLogin = document.getElementById("switch-to-login");//span in modale-signup
