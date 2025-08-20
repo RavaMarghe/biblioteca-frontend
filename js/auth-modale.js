@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const loginBtn = document.getElementById("login-btn");
+  const loginBtn = document.getElementsByClassName("login-btn");
   const modalPlaceholder = document.getElementById("modal-placeholder");
   const signupModalPlaceholder = document.getElementById(
     "signup-modal-placeholder"
