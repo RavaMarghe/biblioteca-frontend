@@ -1,94 +1,100 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const loginBtn = document.getElementsByClassName("login-btn");
-  const modalPlaceholder = document.getElementById("modal-placeholder");
-  const signupModalPlaceholder = document.getElementById(
-    "signup-modal-placeholder"
-  );
-  const transparentLayer = document.getElementById("transparent-layer");
-
-  // Apertura modale con form di accesso
-  loginBtn.addEventListener("click", () => {
-    fetch("/html/modale-login.html")
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Html del modale di login non trovato");
+    const modalPlaceholder = document.getElementById("modal-placeholder");//contenitore per il modale
+    const transparentLayer = document.getElementById("transparent-layer");//livello trasparente, per cliccare fuori e chiudere il modale
+    const loginBtns = document.querySelectorAll("#login-btn, .login-btn");//in index.html è un id, in catalogo.html è una classe
+    
+    loginBtns.forEach(
+        function (btn) {
+            btn.addEventListener("click", apriModaleLogin);
         }
-        return res.text();
-      })
-      .then((html) => {
-        console.log("Contenuto caricato: ", html);
-        modalPlaceholder.innerHTML = html;
+    );
 
-        const modal = document.getElementById("auth-modal");
-        if (!modal) {
-          console.error("Modale non trovato");
-          return;
-        }
-
-        // Visualizzo il modale di accesso
-        modal.style.display = "block";
-        transparentLayer.style.display = "block";
-
-        // Chiudo il modale con il bottone di chiusura
-        const closeBtn = document.getElementById("close-modal");
-        closeBtn.addEventListener("click", () => {
-          modal.style.display = "none";
-          transparentLayer.style.display = "none";
-        });
-
-        // Chiudo il modale cliccando al di fuori
-        window.addEventListener("click", (e) => {
-          if (e.target === transparentLayer) {
-            modal.style.display = "none";
-            transparentLayer.style.display = "none";
-          }
-        });
-
-        // Switch al form di registrazione
-        const switchToSignup = document.getElementById("switch-to-signup");
-        switchToSignup.addEventListener("click", () => {
-          fetch("/html/modale-signup.html")
-            .then((res) => {
-              if (!res.ok) {
-                throw new Error("Html del modale di login non trovato");
-              }
-              return res.text();
-            })
-            .then((signupHtml) => {
-              console.log("Contenuto caricato: ", signupHtml);
-              modalPlaceholder.innerHTML = signupHtml;
-
-              // Mostro il di registrazione
-              const signupModal = document.getElementById("signup-modal");
-              if (!signupModal) {
-                console.error("Modale non trovato");
-                return;
-              }
-
-              signupModal.style.display = "block";
-
-              // Chiudo il modale con il bottone di chiusura
-              const closeBtn = document.getElementById("close-modal");
-              closeBtn.addEventListener("click", () => {
-                signupModal.style.display = "none";
-                transparentLayer.style.display = "none";
-              });
-
-              // Chiudo il modale cliccando al di fuori
-              window.addEventListener("click", (e) => {
-                if (e.target === transparentLayer) {
-                  signupModal.style.display = "none";
-                  transparentLayer.style.display = "none";
+    // Aggiungo un listener per il click sul livello trasparente
+    // Se clicco sul livello trasparente, chiudo il modale
+    transparentLayer.addEventListener("click",
+        () => {
+                //seleziona il modale aperto (il primo che ha display: block)
+                const modaleAperto = modalPlaceholder.querySelector(".modal[style*='display: block']");
+                if(modaleAperto){
+                    chiudiModale(modaleAperto);
                 }
-              });
+        })
 
-              // Torno al form di accesso
-              const switchToLogin = document.getElementById("switch-to-login");
-              switchToLogin.addEventListener("click", () => {
-                loginBtn.click();
-              });
-            });
+    function apriModaleLogin() {
+        fetch("/html/modale-login.html")
+            .then((res) => {//res è un'oggetto Response
+                if (!res.ok) {
+                    throw new Error("Html del modale di login non trovato");
+                }
+                return res.text();//ritorna una stringa
+            })
+            .then((html) => {
+                console.log("Contenuto caricato: ", html);
+                modalPlaceholder.innerHTML = html;//Inserisce nel div #modal-placeholder il codice HTML del modale
+
+                const modal = document.getElementById("auth-modal");//modale effettivo nel div #modal-placeholder
+                if (!modal) {
+                    console.error("Modale non trovato");
+                    return;
+                }
+
+                // Visualizzo il modale di accesso
+                modal.style.display = "block";
+                transparentLayer.style.display = "block";
+
+                // Chiudo il modale con il bottone di chiusura
+                const closeBtn = document.getElementById("close-modal");
+                //onclick è una proprietà dell'elemento, cui assegno una funzione                                     
+                closeBtn.onclick = () => {chiudiModale(modal)};
+
+                const switchToSignup = document.getElementById("switch-to-signup");//span in modale-login
+                // Switch al form di registrazione
+                apriModaleSignup(switchToSignup);
+
+            })
+    }
+
+    function apriModaleSignup(switchToSignup) {
+        switchToSignup.addEventListener("click", () => {
+            fetch("/html/modale-signup.html")
+                .then((res) => {//controllo Response
+                    if (!res.ok) {
+                        throw new Error("Html del modale di login non trovato");
+                    }
+                    return res.text();
+                })
+                .then((signupHtml) => {//caricamento pagina di signup nel placeholder
+                    console.log("Contenuto caricato: ", signupHtml);
+                    modalPlaceholder.innerHTML = signupHtml;
+
+
+                    const signupModal = document.getElementById("signup-modal");
+                    if (!signupModal) {
+                        console.error("Modale non trovato");
+                        return;
+                    }
+                    // Mostro il modale di registrazione
+                    signupModal.style.display = "block";
+
+                    // Chiudo il modale con il bottone di chiusura
+                    const closeBtn = document.getElementById("close-modal");
+                    closeBtn.onclick = () => { chiudiModale(signupModal) };
+
+                    // Torno al form di accesso
+                    const switchToLogin = document.getElementById("switch-to-login");//span in modale-signup
+                    switchToLogin.addEventListener("click", () => {
+                        apriModaleLogin(); //ricarica il login
+                    });
+                });
         });
-      });
-  });
-});
+    }
+
+    function chiudiModale(modal) {
+        modal.style.display = "none";
+        transparentLayer.style.display = "none";
+        console.log("Chiusura modale");
+    }
+
+})
+
+
