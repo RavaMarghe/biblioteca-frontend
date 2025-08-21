@@ -1,8 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
     const modalPlaceholder = document.getElementById("modal-placeholder");//contenitore per il modale
     const transparentLayer = document.getElementById("transparent-layer");//livello trasparente, per cliccare fuori e chiudere il modale
-    const loginBtns = document.querySelectorAll("#login-btn, .login-btn");//in index.html è un id, in catalogo.html è una classe
-    
+    const loginBtns = document.querySelectorAll("#login-btn");//in index.html e catalogo.html
+    /*
+    loginbtns è una NodeList,
+    querySelectorAll cerca tutti gli elementi con id="login-btn" presenti nella pagina corrente
+    in loginBtns ci sarà un solo elemento, perchè non stai mai caricando due pagine HTML nello stesso DOM: 
+    ogni volta il browser carica solo una.
+    querySelectorAll può essere utile se in futuro se dovessimo avere più bottoni di login nella stessa pagina.
+    */
+
+    console.log(loginBtns);//stampa di debug
     loginBtns.forEach(
         function (btn) {
             btn.addEventListener("click", apriModaleLogin);
@@ -13,11 +21,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Se clicco sul livello trasparente, chiudo il modale
     transparentLayer.addEventListener("click",
         () => {
-                //seleziona il modale aperto (il primo che ha display: block)
-                const modaleAperto = modalPlaceholder.querySelector(".modal[style*='display: block']");
-                if(modaleAperto){
-                    chiudiModale(modaleAperto);
-                }
+            //seleziona il modale aperto (il primo che ha display: block)
+            const modaleAperto = modalPlaceholder.querySelector(".modal[style*='display: block']");
+            if (modaleAperto) {
+                chiudiModale(modaleAperto);
+            }
         })
 
     function apriModaleLogin() {
@@ -45,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Chiudo il modale con il bottone di chiusura
                 const closeBtn = document.getElementById("close-modal");
                 //onclick è una proprietà dell'elemento, cui assegno una funzione                                     
-                closeBtn.onclick = () => {chiudiModale(modal)};
+                closeBtn.onclick = () => { chiudiModale(modal) };
 
                 const switchToSignup = document.getElementById("switch-to-signup");//span in modale-login
                 // Switch al form di registrazione
@@ -85,6 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     switchToLogin.addEventListener("click", () => {
                         apriModaleLogin(); //ricarica il login
                     });
+
                 });
         });
     }
